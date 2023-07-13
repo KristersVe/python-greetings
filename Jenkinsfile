@@ -3,6 +3,11 @@ pipeline {
     triggers { 
         pollSCM("*/1 * * * *") 
     }
+
+    options {
+        disableConcurrentBuilds()
+    }
+
     stages {
         stage("Build docker image") {
             steps {
@@ -54,9 +59,6 @@ pipeline {
                 test_on("prod")
             }
         }
-    }
-    options {
-        executionModel "sequential"
     }
 }
 
