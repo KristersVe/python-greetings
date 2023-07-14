@@ -12,7 +12,7 @@ pipeline {
         stage("Build docker image") {
             steps {
                 print_text("Building docker image")
-                git branch: 'main', url: 'https://github.com/KristersVe/python-greetings.git'
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/KristersVe/python-greetings.git']]])
                 sh "docker build -t kristersv/python-greetings-app:latest ."
                 sh "docker push kristersv/python-greetings-app:latest"
             }
