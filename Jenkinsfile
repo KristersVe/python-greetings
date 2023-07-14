@@ -76,5 +76,5 @@ def deploy_on(env) {
 
 def test_on(env) {
     sh "docker pull kristersv/api-tests:latest"
-    sh "docker run --network=host --rm kristersv/api-tests:latest run greetings ${env}"
+    sh "docker run --network=host --rm kristersv/api-tests:latest run greetings greetings_${env}"
 }
